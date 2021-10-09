@@ -63,15 +63,15 @@ const getEndsIn = (current : number, type : cronType) : number => {
   const now = new Date();
   switch (type) {
     case 'minute':
-      return (new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), current + 1, 0)).getTime() - now.getTime();
+      return (new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0)).getTime() - now.getTime();
     case 'hour':
-      return (new Date(now.getFullYear(), now.getMonth(), now.getDate(), current + 1, 0, 0)).getTime() - now.getTime();
+      return (new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0)).getTime() - now.getTime();
     case 'day':
-      return (new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0)).getTime() - now.getTime();
+      return (new Date(now.getFullYear(), now.getMonth() + 1, 1, 0, 0, 0)).getTime() - now.getTime();
     case 'month':
-      return (new Date(now.getFullYear(), now.getMonth() + 1, 0, 0, 0, 0)).getTime() - now.getTime();
+      return (new Date(now.getFullYear() + 1, 0, 0, 0, 0, 0)).getTime() - now.getTime();
     case "weekday":
-      return (new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0)).getTime() - now.getTime();
+      return (new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7, 0, 0, 0)).getTime() - now.getTime();
   }
 
   return 0;
